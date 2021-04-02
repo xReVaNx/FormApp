@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace FormApp.Controllers
 {
@@ -34,6 +35,30 @@ namespace FormApp.Controllers
             var form = new Form();
             form.firstName = firstName;
             form.lastName = lastName;
+
+
+            string path = $"Data/ContactForm.txt.";
+
+            if (!Directory.Exists($"./Data"))
+            {
+                DirectoryInfo dir = new DirectoryInfo($"./");
+                dir.CreateSubdirectory("Data");
+            }
+
+
+            FileInfo f = new FileInfo(path);
+            FileStream fs = f.Create();
+            fs.Close();
+
+
+            using (StreamWriter file = new StreamWriter(path))
+            {
+                file.WriteLine("Imię: " + form.firstName);
+                file.WriteLine("Nazwisko: " + form.lastName);
+                file.WriteLine();
+
+            }
+
             return View();
         }
 

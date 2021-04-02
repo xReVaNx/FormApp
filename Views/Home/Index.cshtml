@@ -3,15 +3,17 @@
 }
 
 <div class="text-center">
-    <form name="contactForm">
+    <h4>Podaj dane do kontaktu:</h4>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post)) ;
+    <form name="contactForm" method="post" action="">
         <p>Imię</p>
-        <input type="text" id="firstName" />
+        <input type="text" name="firstName" />
         <br />
         <br />
         <p>Nazwisko</p>
-        <input type="text" id="lastName" />
+        <input type="text" name="lastName" />
         <br />
         <br />
-        <button type="submit" id="btnSub">Wyślij</button>
+        <input type="submit" value="Zapisz" name="btnSub" />
     </form>
 </div>

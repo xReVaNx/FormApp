@@ -18,13 +18,22 @@ namespace FormApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string firstName, string lastName)
+        {
+            var form = new Form();
+            form.firstName = firstName;
+            form.lastName = lastName;
             return View();
         }
 
